@@ -54,8 +54,16 @@ body {
   max-width: 42rem;
   background-color: var(--color-background-500);
   border-radius: 0.9rem;
-  overflow: scroll;
+  /* overflow: scroll;  <-- 删除这行 */
+  overflow: hidden; /* 改为 hidden，让内部的 list 处理滚动 */
   position: relative;
+}
+
+.list {
+  list-style: none;
+  padding: 0.8rem 0;
+  overflow-y: auto; /* 改为 auto，且只在垂直方向 */
+  height: 100%; /* 确保高度填充 */
 }
 
 .loader {
@@ -133,12 +141,6 @@ body {
   font-weight: bold;
   cursor: pointer;
   z-index: 999;
-}
-
-.list {
-  list-style: none;
-  padding: 0.8rem 0;
-  overflow: scroll;
 }
 
 .list-watched {
@@ -338,7 +340,23 @@ body {
   align-items: center;
   justify-content: center;
 }
+/* 自定义滚动条样式 */
+::-webkit-scrollbar {
+  width: 0.8rem;
+}
 
+::-webkit-scrollbar-track {
+  background: var(--color-background-900);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-background-100);
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-dark);
+}
 /*
 SPACING SYSTEM (px)
 2 / 4 / 8 / 12 / 16 / 24 / 32 / 40 / 48 / 64 / 80 / 96 / 128
